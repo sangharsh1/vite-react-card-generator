@@ -3,16 +3,15 @@ import React from "react";
 import "./App.css";
 import cards from "./cards";
 import Card from "./Card";
+import Form from "./Form";
 
 function App() {
-  const [cards, setCards] = useState([
-    { id: 1, title: "Card 1", content: "Content 1" },
-  ]);
+  const [cards, setCards] = useState([]);
 
-  const cardGenerator = () => {
+  const cardGenerator = (name, age) => {
     const newObject = {
-      title: `Card: ${cards.length + 1}`,
-      content: `Content: ${cards.length + 1}`,
+      title: `Name: ${name}`,
+      content: `Age: ${age}`,
     };
     setCards([...cards, newObject]);
   };
@@ -26,8 +25,9 @@ function App() {
       <h1>Hello this is my Vite + React App.</h1>
       <p>The Application name is Card Generator</p>
       <br></br>
+      <Form cardGenerator={cardGenerator} />
       <div>
-        <button onClick={cardGenerator}>Generate Card</button>
+        {/* <button onClick={cardGenerator}>Generate Card</button> */}
         <div className="card-container">
           {cards.map((card) => {
             return (
